@@ -1,84 +1,107 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import astronautImage from "~/assets/astronaut.png";
-import HeroImage from "~/components/hero-image.astro";
-import Starfield from "~/components/starfield.astro";
-import GitHubCorner from "./github-corner.astro";
+import matiaHero from "~/assets/matia-hero.png"; // ضع صورة بانر رئيسية (ديكور الصالة/الخدمات)
 
-const widths = [450, 800];
-const sizes = "(min-width: 640px) 42vw, 67vw";
+const widths = [600, 900, 1200];
+const sizes = "(min-width: 1024px) 40vw, 80vw";
+
+const PHONE = "+966550140714";
+const WHATSAPP = "https://wa.me/966550140714";
+const MAPS =
+  "https://www.google.com/maps/search/?api=1&query=R42V%2BF56%2C%20Jeddah%2023832";
 ---
 
-<section class="relative h-full bg-black">
-  <Starfield />
-  <GitHubCorner />
-  <div id="splash-bg-fallback" class="absolute inset-0 hidden opacity-40">
-    <HeroImage />
-  </div>
-  <div class="relative grid h-full place-items-center sm:grid-cols-2">
-    <h2
-      class="flex flex-col items-center gap-2 self-end sm:gap-4 sm:self-auto sm:justify-self-end"
-    >
-      <Icon name="logomark" class="size-20 text-white md:size-32" />
-      <div
-        class="gradient-text text-center font-extrabold tracking-tighter text-6xl md:text-8xl"
+<section class="relative h-full bg-[var(--color-background)]">
+  <div class="relative grid h-full place-items-center gap-10 sm:grid-cols-2">
+    <!-- نص البطل -->
+    <div class="order-2 space-y-4 text-center sm:order-1 sm:text-right">
+      <h2
+        class="gradient-text font-extrabold leading-tight tracking-tight text-5xl md:text-7xl"
       >
-        Build fast
-        <br /> websites,
-        <br /> faster.
+        استرخاءٌ فاخر
+        <br />
+        عناية متكاملة
+      </h2>
+      <p
+        class="mx-auto max-w-xl text-[var(--color-text-offset)] text-lg md:text-xl"
+      >
+        ماتيا سبا النسائي في جدة — عناية بالأظافر، والجسم، والبشرة، والشعر، مع
+        منتجات تجميلية طبيعية.
+      </p>
+      <div
+        class="flex flex-wrap items-center justify-center gap-3 sm:justify-start"
+      >
+        <a
+          href={`tel:${PHONE}`}
+          class="rounded-full bg-[var(--color-primary)] px-6 py-3 font-medium text-white text-sm hover:opacity-95 focus:outline-none focus:ring"
+        >
+          اتصال الآن
+        </a>
+        <a
+          href={WHATSAPP}
+          target="_blank"
+          rel="noopener"
+          class="rounded-full border border-[var(--color-border)] bg-[var(--color-background-offset)] px-6 py-3 font-medium text-sm hover:opacity-95 focus:outline-none focus:ring"
+        >
+          حجز عبر واتساب
+        </a>
+        <a
+          href={MAPS}
+          target="_blank"
+          rel="noopener"
+          class="rounded-full px-6 py-3 font-medium text-sm hover:opacity-95 focus:outline-none focus:ring"
+          style="background:transparent;color:var(--color-secondary)"
+        >
+          اتجهي إلينا
+        </a>
       </div>
-    </h2>
+
+      <div class="mt-3 text-[var(--color-text-offset)] text-sm">
+        <span
+          class="inline-block rounded-full bg-[var(--color-background-offset)] px-3 py-1"
+        >
+          ⭐ 4.63 على Google
+        </span>
+        <span class="mx-2">•</span>
+        <span>مفتوح اليوم حتى 11 مساءً</span>
+      </div>
+    </div>
+
+    <!-- صورة البطل -->
     <div
-      id="astronaut"
-      class="w-2/3 max-w-3xl self-start sm:w-10/12 sm:self-auto sm:justify-self-start"
+      id="hero-media"
+      class="order-1 w-11/12 max-w-3xl sm:order-2 sm:w-10/12"
     >
       <Image
-        class="h-full w-full object-cover"
-        src={astronautImage}
+        class="h-full w-full rounded-3xl object-cover shadow-2xl"
+        src={matiaHero}
         widths={widths}
         sizes={sizes}
         loading="eager"
-        alt="A floating astronaut in a space suit"
+        alt="ماتيا سبا — أجواء هادئة وخدمات عناية"
       />
     </div>
   </div>
 </section>
 
-<noscript>
-  <style>
-    #splash-bg-fallback {
-      display: block;
-    }
-  </style>
-</noscript>
-
 <style>
+  /* حركة طفيفة للصورة لإحساس نابض بالحياة */
   @keyframes float {
     0% {
       transform: translate3d(0, 0, 0);
     }
-
     100% {
-      transform: translate3d(0, 30px, 0);
+      transform: translate3d(0, 18px, 0);
     }
   }
 
-  #astronaut {
-    animation: float linear 2.5s infinite alternate;
+  #hero-media {
+    animation: float linear 3s infinite alternate;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    #astronaut {
-      @apply animate-none;
-    }
-
-    :global(#starfield) {
-      @apply hidden;
-    }
-
-    #splash-bg-fallback {
-      @apply block;
+    #hero-media {
+      animation: none;
     }
   }
 </style>
