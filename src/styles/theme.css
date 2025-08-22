@@ -31,6 +31,8 @@ MATIA palette (derived from logo & menu):
   --color-background: var(--brand-cream);
   --color-background-offset: var(--brand-sand);
   --color-border: var(--brand-border);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #fff; /* أبيض للوضوح */
 }
 
 /* Dark theme — warm, not bluish */
@@ -42,6 +44,8 @@ MATIA palette (derived from logo & menu):
   --color-background: #1a1714; /* warm near-black */
   --color-background-offset: #25201b; /* card surfaces */
   --color-border: rgba(249, 247, 243, 0.12);
+  --color-button-bg: var(--color-primary);
+  --color-button-text: #000; /* أسود أو بني غامق للوضوح */
 }
 
 /* Map to utility classes used by the template */
