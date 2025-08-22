@@ -1,19 +1,59 @@
-[data-theme="light"] {
-  --color-primary: theme("colors.pink.500");
-  --color-secondary: theme("colors.indigo.500");
-  --color-text: theme("colors.gray.900");
-  --color-text-offset: theme("colors.gray.600");
-  --color-background: theme("colors.gray.50");
-  --color-background-offset: theme("colors.gray.100");
-  --color-border: theme("colors.gray.900" / 10%);
+/*
+MATIA palette (derived from logo & menu):
+- Gold: #C89A1B (primary)
+- Amber: #E0B43A (accent for gradients)
+- Deep Brown: #3E2A1E (secondary / headings)
+- Ink: #11100E (very dark text)
+- Cream: #F5F0E6 (page background)
+- Sand: #ECE3D3 (cards / offsets)
+- Border: rgba(17,16,14,0.08)
+*/
+
+:root {
+  --brand-gold: #c89a1b;
+  --brand-amber: #e0b43a;
+  --brand-brown: #3e2a1e;
+  --brand-ink: #11100e;
+  --brand-cream: #f5f0e6;
+  --brand-sand: #ece3d3;
+  --brand-border: rgba(17, 16, 14, 0.08);
+
+  /* shade helpers for selection / hovers */
+  --brand-gold-600: #b78917;
 }
 
+/* Light theme — default for marketing site */
+[data-theme="light"] {
+  --color-primary: var(--brand-gold);
+  --color-secondary: var(--brand-brown);
+  --color-text: var(--brand-ink);
+  --color-text-offset: #6b665e; /* warm gray to match brand */
+  --color-background: var(--brand-cream);
+  --color-background-offset: var(--brand-sand);
+  --color-border: var(--brand-border);
+}
+
+/* Dark theme — warm, not bluish */
 [data-theme="dark"] {
-  --color-primary: theme("colors.pink.400");
-  --color-secondary: theme("colors.indigo.400");
-  --color-text: theme("colors.gray.50");
-  --color-text-offset: theme("colors.gray.400");
-  --color-background: theme("colors.gray.900");
-  --color-background-offset: theme("colors.gray.800");
-  --color-border: theme("colors.gray.50" / 10%);
+  --color-primary: #e3bf56; /* lighter gold for contrast on dark */
+  --color-secondary: #c9b7a3; /* warm beige for subtle accents */
+  --color-text: #f9f7f3;
+  --color-text-offset: #d1c9bd;
+  --color-background: #1a1714; /* warm near-black */
+  --color-background-offset: #25201b; /* card surfaces */
+  --color-border: rgba(249, 247, 243, 0.12);
+}
+
+/* Map to utility classes used by the template */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  /* these custom properties are consumed in the template via Tailwind's theme tokens */
+  --tw-color-primary: var(--color-primary);
+  --tw-color-secondary: var(--color-secondary);
+  --tw-color-text: var(--color-text);
+  --tw-color-text-offset: var(--color-text-offset);
+  --tw-color-background: var(--color-background);
+  --tw-color-background-offset: var(--color-background-offset);
+  --tw-color-border: var(--color-border);
 }
