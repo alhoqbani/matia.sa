@@ -1,6 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import ContentSection from "~/components/content-section.astro";
+import matiaLogo from "~/assets/matia-logo.png"; // or .svg/.jpg
 
 const PHONE = "+966550140714";
 const WHATSAPP = "https://wa.me/966550140714";
@@ -10,10 +11,12 @@ const IG = "https://www.instagram.com/matia_csp/";
 ---
 
 <ContentSection title="لماذا ماتيا؟" id="intro">
-  <Icon
+  <img
     slot="eyebrow"
-    name="logomark"
-    class="size-32 text-[var(--color-secondary)]"
+    src={matiaLogo.src}
+    alt="MATIA SPA®"
+    class="h-32 w-auto"
+    loading="eager"
   />
   <Fragment slot="lead">
     ماتيا سبا علامة سعودية مُسجَّلة للعناية المتكاملة —
