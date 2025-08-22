@@ -1,58 +1,79 @@
-/*
-MATIA palette (derived from logo & menu):
-- Gold: #C89A1B (primary)
-- Amber: #E0B43A (accent for gradients)
-- Deep Brown: #3E2A1E (secondary / headings)
-- Ink: #11100E (very dark text)
-- Cream: #F5F0E6 (page background)
-- Sand: #ECE3D3 (cards / offsets)
-- Border: rgba(17,16,14,0.08)
-*/
+/* ──────────────────────────────────────────────────────────────
+   MATIA brand theme (Gold + Spa Green)
+   - Gold (CTA):           #C89A1B
+   - Emerald (links):      #3F7A4F
+   - Olive (headings):     #2F5132
+   - Warm Brown (support): #3E2A1E
+   - Light Sage (bg):      #EFF3EC
+   - Sage Offset (cards):  #E3EAD9
+   - Dark Sage (dark bg):  #151914
+   - Dark Offset:          #1E241D
+   - Ink:                  #11100E
+   ────────────────────────────────────────────────────────────── */
 
 :root {
+  /* brand */
   --brand-gold: #c89a1b;
-  --brand-amber: #e0b43a;
+  --brand-emerald: #3f7a4f;
+  --brand-olive: #2f5132;
   --brand-brown: #3e2a1e;
   --brand-ink: #11100e;
-  --brand-cream: #f5f0e6;
-  --brand-sand: #ece3d3;
-  --brand-border: rgba(17, 16, 14, 0.08);
 
-  /* shade helpers for selection / hovers */
+  /* surfaces */
+  --brand-sage: #eff3ec; /* page bg (light) */
+  --brand-sage-offset: #e3ead9; /* cards (light) */
+  --brand-dark-sage: #151914; /* page bg (dark) */
+  --brand-dark-offset: #1e241d; /* cards (dark) */
+
+  --brand-border: rgba(17, 16, 14, 0.1);
+  --brand-border-dark: rgba(249, 247, 243, 0.12);
+
+  /* helpers */
   --brand-gold-600: #b78917;
 }
 
-/* Light theme — default for marketing site */
+/* Light theme — spa sage background */
 [data-theme="light"] {
-  --color-primary: var(--brand-gold);
-  --color-secondary: var(--brand-brown);
+  --color-primary: var(--brand-gold); /* CTA buttons */
+  --color-secondary: var(--brand-olive); /* headings / accents */
+  --color-link: var(--brand-emerald);
+  --color-link-hover: var(--brand-olive);
+
   --color-text: var(--brand-ink);
-  --color-text-offset: #6b665e; /* warm gray to match brand */
-  --color-background: var(--brand-cream);
-  --color-background-offset: var(--brand-sand);
+  --color-text-offset: #6b665e;
+
+  --color-background: var(--brand-sage); /* << greenish background */
+  --color-background-offset: var(--brand-sage-offset);
   --color-border: var(--brand-border);
+
+  /* buttons */
   --color-button-bg: var(--color-primary);
-  --color-button-text: #fff; /* أبيض للوضوح */
+  --color-button-text: #fff;
 }
 
-/* Dark theme — warm, not bluish */
+/* Dark theme — warm green-tinted dark */
 [data-theme="dark"] {
-  --color-primary: #e3bf56; /* lighter gold for contrast on dark */
-  --color-secondary: #c9b7a3; /* warm beige for subtle accents */
+  --color-primary: #e3bf56; /* lighter gold for contrast */
+  --color-secondary: #c9b7a3; /* warm beige accent */
+  --color-link: #9ad1a8; /* soft emerald for links */
+  --color-link-hover: #bfe2c8;
+
   --color-text: #f9f7f3;
   --color-text-offset: #d1c9bd;
-  --color-background: #1a1714; /* warm near-black */
-  --color-background-offset: #25201b; /* card surfaces */
-  --color-border: rgba(249, 247, 243, 0.12);
+
+  --color-background: var(--brand-dark-sage); /* << warm dark green */
+  --color-background-offset: var(--brand-dark-offset);
+  --color-border: var(--brand-border-dark);
+
+  /* buttons */
   --color-button-bg: var(--color-primary);
-  --color-button-text: #000; /* أسود أو بني غامق للوضوح */
+  --color-button-text: #0f0e0c; /* near-black for gold buttons */
 }
 
-/* Map to utility classes used by the template */
+/* Map to template tokens */
 :root,
 [data-theme="light"],
 [data-theme="dark"] {
-  /* these custom properties are consumed in the template via Tailwind's theme tokens */
   --tw-color-primary: var(--color-primary);
   --tw-color-secondary: var(--color-secondary);
   --tw-color-text: var(--color-text);
