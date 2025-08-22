@@ -3,87 +3,55 @@ import CompatibilityList from "~/components/compatibility-list.astro";
 import ContentSection from "~/components/content-section.astro";
 import type { CompatibilityItem } from "~/types";
 
-const frameworks: Array<CompatibilityItem> = [
+const reviews: Array<CompatibilityItem> = [
   {
-    title: "React",
-    icon: "frameworks/react",
-    url: "https://reactjs.org/",
+    title: "Google Reviews — 4.63★",
+    icon: "fa-brands:google",
+    url: "https://www.google.com/maps/search/?api=1&query=MATIA%20SPA%20Jeddah",
   },
   {
-    title: "Preact",
-    icon: "frameworks/preact",
-    url: "https://preactjs.com/",
-  },
-  {
-    title: "Svelte",
-    icon: "frameworks/svelte",
-    url: "https://svelte.dev/",
-  },
-  {
-    title: "Vue",
-    icon: "frameworks/vue",
-    url: "https://vuejs.org/",
-  },
-  {
-    title: "Solid",
-    icon: "frameworks/solid",
-    url: "https://www.solidjs.com/",
-  },
-  {
-    title: "Lit",
-    icon: "frameworks/lit",
-    url: "https://lit.dev/",
+    title: "Instagram",
+    icon: "fa-brands:instagram",
+    url: "https://www.instagram.com/matia_csp/",
   },
 ];
 
-const platforms: Array<CompatibilityItem> = [
+const contact: Array<CompatibilityItem> = [
   {
-    title: "Netlify",
-    icon: "platforms/netlify",
-    url: "https://www.netlify.com/",
+    title: "واتساب",
+    icon: "mdi:whatsapp",
+    url: "https://wa.me/966550140714",
   },
   {
-    title: "Vercel",
-    icon: "platforms/vercel",
-    url: "https://vercel.com/",
+    title: "اتصال هاتفي",
+    icon: "mdi:phone",
+    url: "tel:+966550140714",
   },
   {
-    title: "Cloudflare",
-    icon: "fa-brands:cloudflare",
-    url: "https://pages.cloudflare.com/",
+    title: "اتجهي إلينا",
+    icon: "mdi:map-marker",
+    url: "https://www.google.com/maps/search/?api=1&query=R42V%2BF56%2C%20Jeddah%2023832",
   },
   {
-    title: "Render",
-    icon: "platforms/render",
-    url: "https://render.com/",
-  },
-  {
-    title: "GitHub",
-    icon: "fa-brands:github",
-    url: "https://pages.github.com/",
-  },
-  {
-    title: "GitLab",
-    icon: "fa-brands:gitlab",
-    url: "https://docs.gitlab.com/ee/user/project/pages/",
+    title: "ساعات العمل: حتى 11 مساءً",
+    icon: "mdi:clock-outline",
+    url: "#",
   },
 ];
 ---
 
-<ContentSection title="Compatibility" id="compatibility">
+<ContentSection title="التقييمات والتواصل" id="compatibility">
   <Fragment slot="lead">
-    Astro <span class="text-primary">plays nice</span>. Bring your own UI{" "}
-    <span class="text-primary">framework</span>
-    and deploy to your favorite <span class="text-primary">platform</span>.
+    نفخر بثقة عميلاتنا. تواصلي معنا عبر القنوات التالية واحجزي وقتك بسهولة.
   </Fragment>
   <CompatibilityList
-    items={frameworks}
-    title="Frameworks"
-    url="https://docs.astro.build/core-concepts/framework-components/"
+    items={reviews}
+    title="التقييمات"
+    url="https://www.google.com/maps/search/?api=1&query=MATIA%20SPA%20Jeddah"
   />
   <CompatibilityList
-    items={platforms}
-    title="Platforms"
-    url="https://docs.astro.build/guides/deploy/"
+    items={contact}
+    title="قنوات التواصل"
+    url="https://www.instagram.com/matia_csp/"
   />
 </ContentSection>

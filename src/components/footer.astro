@@ -3,47 +3,73 @@ import { Icon } from "astro-icon/components";
 import HeroImage from "~/components/hero-image.astro";
 import type { FooterLink } from "~/types";
 
+const PHONE = "+966550140714";
+const WHATSAPP = "https://wa.me/966550140714";
+const MAPS =
+  "https://www.google.com/maps/search/?api=1&query=R42V%2BF56%2C%20Jeddah%2023832";
+const IG = "https://www.instagram.com/matia_csp/";
+
 const links: Array<FooterLink> = [
-  {
-    url: "https://astro.build/",
-    description: "Astro's official website",
-    icon: "mdi:home",
-  },
-  {
-    url: "https://github.com/mhyfritz/astro-landing-page",
-    description: "View source on GitHub",
-    icon: "fa-brands:github-alt",
-  },
-  {
-    url: "https://astro.build/chat",
-    description: "Astro on Discord",
-    icon: "fa-brands:discord",
-  },
-  {
-    url: "https://twitter.com/astrodotbuild",
-    description: "Astro on Twitter",
-    icon: "fa-brands:twitter",
-  },
+  { url: IG, description: "إنستغرام ماتيا", icon: "fa-brands:instagram" },
+  { url: WHATSAPP, description: "واتساب", icon: "mdi:whatsapp" },
+  { url: `tel:${PHONE}`, description: "اتصال هاتفي", icon: "mdi:phone" },
+  { url: MAPS, description: "اتجهي إلينا (خرائط)", icon: "mdi:map-marker" },
 ];
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
+<footer
+  class="relative overflow-hidden border-t border-default bg-[var(--color-background)]"
+>
+  <div class="pointer-events-none absolute inset-0 opacity-20">
     <HeroImage />
   </div>
-  <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      links.map((link) => (
-        <li>
-          <a
-            class="flex size-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={link.url}
-          >
-            <span class="sr-only">{link.description}</span>
-            <Icon class="size-full" name={link.icon} />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+
+  <div class="relative mx-auto max-w-6xl px-6 py-10 sm:py-14">
+    <div
+      class="flex flex-col items-center gap-6 sm:flex-row sm:justify-between"
+    >
+      <div class="text-center sm:text-right">
+        <h3 class="heading font-bold text-2xl">MATIA SPA® — ماتيا سبا</h3>
+        <p class="mt-2 text-offset text-sm">
+          R42V+F56، حي طيبة — جدة 23832 • مفتوح اليوم حتى 11 مساءً
+        </p>
+      </div>
+
+      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {
+          links.map((link) => (
+            <li>
+              <a
+                class="flex size-14 items-center justify-center rounded-full border-2 border-current bg-[var(--color-background-offset)] p-3 hover:opacity-95 focus:outline-none focus:ring"
+                href={link.url}
+                target={link.url.startsWith("http") ? "_blank" : undefined}
+                rel={link.url.startsWith("http") ? "noopener" : undefined}
+                aria-label={link.description}
+              >
+                <Icon class="size-full" name={link.icon} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div
+      class="mt-8 flex flex-col items-center justify-between gap-3 border-t border-default pt-6 text-xs sm:flex-row"
+    >
+      <p class="text-center text-offset">
+        © {new Date().getFullYear()} MATIA SPA®. جميع الحقوق محفوظة.
+      </p>
+      <nav class="flex flex-wrap items-center justify-center gap-4">
+        <a href="#features" class="hover:text-primary">الخدمات</a>
+        <a href="#compatibility" class="hover:text-primary"
+          >التقييمات والتواصل</a
+        >
+        <a href="#showcase" class="hover:text-primary">المعرض</a>
+        <a href={IG} target="_blank" rel="noopener" class="hover:text-primary"
+          >إنستغرام</a
+        >
+      </nav>
+    </div>
+  </div>
 </footer>

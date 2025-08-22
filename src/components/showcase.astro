@@ -1,31 +1,67 @@
 ---
-import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
 import ContentSection from "~/components/content-section.astro";
-import ShowcaseCard from "~/components/showcase-card.astro";
 
-const featuredSites = await getCollection(
-  "showcase",
-  ({ data }) => "featured" in data,
-);
-const orderedSites = featuredSites.sort(
-  (a, b) => a.data.featured! - b.data.featured!,
-);
+// استبدلي المسارات أدناه بصور فعلية من مجلد الأصول لديك
+import g1 from "~/assets/gallery/nails-01.png";
+import g2 from "~/assets/gallery/moroccan-bath-01.png";
+import g3 from "~/assets/gallery/massage-01.png";
+import g4 from "~/assets/gallery/skincare-01.png";
+// import g5 from "~/assets/gallery/lashes-01.png";
+// import g6 from "~/assets/gallery/hair-01.png";
+import g5 from "~/assets/gallery/moroccan-bath-01.png";
+import g6 from "~/assets/gallery/massage-01.png";
+
+const items = [
+  { src: g1, alt: "تصميم أظافر من ماتيا", title: "الأظافر" },
+  { src: g2, alt: "الحمام المغربي", title: "الحمام المغربي" },
+  { src: g3, alt: "جلسات المساج", title: "المساج" },
+  { src: g4, alt: "تنظيف وعناية بالبشرة", title: "البشرة" },
+  { src: g5, alt: "رموش", title: "الرموش" },
+  { src: g6, alt: "تسريحات وقصات شعر", title: "الشعر" },
+];
+
+const widths = [480, 720, 960];
+const sizes = "(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 90vw";
+const IG = "https://www.instagram.com/matia_csp/";
 ---
 
-<ContentSection title="Showcase" id="showcase">
+<ContentSection title="المعرض" id="showcase">
   <Fragment slot="lead">
-    Astro is <span class="text-primary">versatile</span>.{" "}
-    <span class="text-primary">Explore</span> what's possible and get{" "}
-    <span class="text-primary">inspired</span>.
+    لقطات من أجواء <span class="text-primary">ماتيا</span> وخدماتنا — شاهدي المزيد
+    عبر
+    <a
+      href={IG}
+      target="_blank"
+      rel="noopener"
+      class="text-primary underline underline-offset-4">إنستغرام</a
+    >.
   </Fragment>
+
   <div class="max-w-6xl space-y-2">
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {orderedSites.map((site) => <ShowcaseCard site={site} />)}
+      {
+        items.map((item) => (
+          <figure class="overflow-hidden rounded-2xl border border-default bg-offset">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              widths={widths}
+              sizes={sizes}
+              class="h-64 w-full object-cover transition-transform duration-300 hover:scale-[1.03]"
+              loading="lazy"
+            />
+            <figcaption class="p-4 text-center text-offset text-sm">
+              {item.title}
+            </figcaption>
+          </figure>
+        ))
+      }
     </div>
-    <p class="text-right text-sm">
-      <a class="text-primary" href="https://astro.build/showcase/">
-        ...and more &rarr;
-      </a>
+    <p class="text-left text-sm">
+      <a class="text-primary" href={IG} target="_blank" rel="noopener"
+        >شاهدي المزيد ←</a
+      >
     </p>
   </div>
 </ContentSection>
