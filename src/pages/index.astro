@@ -12,27 +12,61 @@ import "~/styles/index.css";
 const { generator, site } = Astro;
 const image = new URL("social.jpg", site);
 const description =
-  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+  "ماتيا سبا النسائي في جدة — عناية متكاملة بالأظافر والجسم والبشرة والشعر، ومنتجات تجميلية طبيعية. احجزي الآن لتجربة استرخاء فاخرة.";
 ---
 
 <!doctype html>
-<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+<html lang="ar" dir="rtl" class="h-full motion-safe:scroll-smooth" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta name="generator" content={generator} />
 
-    <title>Astro Landing Page</title>
+    <title>ماتيا سبا | MATIA SPA® | جدة</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#111827" />
+    <link rel="canonical" href={site} />
 
-    <!-- social media -->
-    <meta property="og:title" content="Astro" />
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="ماتيا سبا | MATIA SPA® | جدة" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={image} />
     <meta property="og:url" content={site} />
+    <meta property="og:locale" content="ar_SA" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Local Business JSON-LD -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'NailSalon',
+        name: 'MATIA SPA®',
+        alternateName: 'ماتيا سبا',
+        url: String(site),
+        image: String(image),
+        description,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'R42V+F56، طيبة',
+          addressLocality: 'جدة',
+          postalCode: '23832',
+          addressCountry: 'SA'
+        },
+        areaServed: 'Jeddah',
+        telephone: '+966550140714',
+        priceRange: '$$ ',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.6336',
+          ratingCount: 'Google'
+        },
+        sameAs: [
+          'https://www.instagram.com/matia_csp/'
+        ]
+      })}
+    </script>
 
     <!-- initialize theme -->
     <script is:inline>
@@ -61,6 +95,11 @@ const description =
   <body
     class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
   >
+    <!--
+      ملاحظة: سنقوم بتعريب/تخصيص المكوّنات لاحقًا. هذه الصفحة تضع العناوين والميتا والـ JSON‑LD بالعربية.
+      المكوّنات أدناه (Header, Splash, Intro, Features, Compatibility, Showcase, Footer)
+      ستُحرّر في ملفاتها لإظهار المحتوى العربي الخاص بماتيا سبا.
+    -->
     <Header />
     <Splash />
     <div class="space-y-24 px-8 py-32">
@@ -70,5 +109,24 @@ const description =
       <Showcase />
     </div>
     <Footer />
+
+    <!-- أزرار اتصال سريعة (يمكن نقلها لمكوّن لاحقًا) -->
+    <div class="fixed bottom-6 left-6 z-50 flex flex-col gap-2 lg:left-auto lg:right-6">
+      <a
+        href="tel:+966550140714"
+        class="rounded-full bg-primary px-4 py-2 text-white shadow-lg hover:opacity-90 focus:outline-none focus:ring"
+        aria-label="اتصلي بنا"
+      >
+        📞 اتصال
+      </a>
+      <a
+        href="https://wa.me/966550140714"
+        class="rounded-full bg-secondary px-4 py-2 text-white shadow-lg hover:opacity-90 focus:outline-none focus:ring"
+        aria-label="واتساب"
+        rel="noopener"
+      >
+        💬 واتساب
+      </a>
+    </div>
   </body>
 </html>
